@@ -14,7 +14,6 @@
 variable "user_public_ssh_key" {
   type = "string"
   description = "User defined public SSH key used to connect to the virtual machine. The format must be in openSSH."
-  default = "None"
 }
 
 variable "ibm_pm_public_ssh_key" {
@@ -27,7 +26,6 @@ variable "ibm_pm_private_ssh_key" {
 
 variable "allow_unverified_ssl" {
   description = "Communication with vsphere server with self signed certificate"
-  default = "true"
 }
 
 ##############################################################
@@ -58,7 +56,6 @@ variable "ibm_stack_name" {
   description = "A unique stack name."
 }
 
-#### Default OS Admin User Map ####
 
 ##### Environment variables #####
 #Variable : ibm_im_repo
@@ -77,7 +74,6 @@ variable "ibm_im_repo_password" {
 variable "ibm_im_repo_user" {
   type = "string"
   description = "IBM Software  Installation Manager Repository username"
-  default = "repouser"
 }
 
 #Variable : ibm_pm_access_token
@@ -108,7 +104,6 @@ variable "ibm_sw_repo_password" {
 variable "ibm_sw_repo_user" {
   type = "string"
   description = "IBM Software Repo Username"
-  default = "repouser"
 }
 
 
@@ -135,7 +130,6 @@ variable "IHSNode01-os_admin_user" {
 variable "IHSNode01_ihs_admin_server_enabled" {
   type = "string"
   description = "IBM HTTP Server Admin Server Enable(true/false)"
-  default = "true"
 }
 
 #Variable : IHSNode01_ihs_admin_server_password
@@ -148,102 +142,90 @@ variable "IHSNode01_ihs_admin_server_password" {
 variable "IHSNode01_ihs_admin_server_port" {
   type = "string"
   description = "IBM HTTP Server Admin Server Port Number"
-  default = "8008"
 }
 
 #Variable : IHSNode01_ihs_admin_server_username
 variable "IHSNode01_ihs_admin_server_username" {
   type = "string"
   description = "IBM HTTP Server Admin Server username"
-  default = "ihsadmin"
 }
 
 #Variable : IHSNode01_ihs_install_dir
 variable "IHSNode01_ihs_install_dir" {
   type = "string"
   description = "The directory to install IBM HTTP Server"
-  default = "/opt/IBM/HTTPServer"
 }
 
 #Variable : IHSNode01_ihs_install_mode
 variable "IHSNode01_ihs_install_mode" {
   type = "string"
   description = "The mode of installation for IBM HTTP Server"
-  default = "nonAdmin"
 }
 
 #Variable : IHSNode01_ihs_java_legacy
 variable "IHSNode01_ihs_java_legacy" {
   type = "string"
   description = "The Java version to be used with IBM HTTP Server version 8.5.5"
-  default = "java8"
 }
 
 #Variable : IHSNode01_ihs_java_version
 variable "IHSNode01_ihs_java_version" {
   type = "string"
   description = "The Java version to be used with IBM HTTP Server"
-  default = "8.0.4.70"
 }
 
 #Variable : IHSNode01_ihs_os_users_ihs_gid
 variable "IHSNode01_ihs_os_users_ihs_gid" {
   type = "string"
   description = "The group name for the IBM HTTP Server user"
-  default = "ihsgrp"
 }
 
 #Variable : IHSNode01_ihs_os_users_ihs_name
 variable "IHSNode01_ihs_os_users_ihs_name" {
   type = "string"
   description = "The username for IBM HTTP Server"
-  default = "ihssrv"
 }
 
 #Variable : IHSNode01_ihs_os_users_ihs_shell
 variable "IHSNode01_ihs_os_users_ihs_shell" {
   type = "string"
   description = "Location of the IBM HTTP Server operating system user shell"
-  default = "/sbin/nologin"
 }
 
 #Variable : IHSNode01_ihs_plugin_enabled
 variable "IHSNode01_ihs_plugin_enabled" {
   type = "string"
   description = "IBM HTTP Server Plugin Enabled"
-  default = "true"
 }
 
 #Variable : IHSNode01_ihs_plugin_install_dir
 variable "IHSNode01_ihs_plugin_install_dir" {
   type = "string"
   description = "IBM HTTP Server Plugin Installation Direcrtory"
-  default = "/opt/IBM/WebSphere/Plugins"
 }
 
 #Variable : IHSNode01_ihs_plugin_was_webserver_name
 variable "IHSNode01_ihs_plugin_was_webserver_name" {
   type = "string"
   description = "IBM HTTP Server Plugin Hostname, normally the FQDN"
-  default = "webserver1"
 }
 
 #Variable : IHSNode01_ihs_port
 variable "IHSNode01_ihs_port" {
   type = "string"
   description = "The IBM HTTP Server default port for HTTP requests"
-  default = "8080"
 }
 
 #Variable : IHSNode01_ihs_version
 variable "IHSNode01_ihs_version" {
   type = "string"
   description = "The version of IBM HTTP Server to install"
-  default = "9.0.0.4"
 }
 
 
 ##### Image Parameters variables #####
+
+##### virtualmachine variables #####
 
 ##### WASDMGRNode01 variables #####
 #Variable : WASDMGRNode01-image
@@ -268,63 +250,54 @@ variable "WASDMGRNode01-os_admin_user" {
 variable "WASDMGRNode01_was_install_dir" {
   type = "string"
   description = "The installation root directory for the WebSphere Application Server product binaries"
-  default = "/opt/IBM/WebSphere/AppServer"
 }
 
 #Variable : WASDMGRNode01_was_java_version
 variable "WASDMGRNode01_was_java_version" {
   type = "string"
   description = "The Java SDK version that should be installed with the WebSphere Application Server. Example format is 8.0.4.70"
-  default = "7.1.40.5"
 }
 
 #Variable : WASDMGRNode01_was_os_users_was_comment
 variable "WASDMGRNode01_was_os_users_was_comment" {
   type = "string"
   description = "Comment that will be added when creating the userid"
-  default = "WAS administrative user"
 }
 
 #Variable : WASDMGRNode01_was_os_users_was_gid
 variable "WASDMGRNode01_was_os_users_was_gid" {
   type = "string"
   description = "Operating system group name that will be assigned to the product installation"
-  default = "wasgrp"
 }
 
 #Variable : WASDMGRNode01_was_os_users_was_home
 variable "WASDMGRNode01_was_os_users_was_home" {
   type = "string"
   description = "Home directory location for operating system user that is used for product installation"
-  default = "/home/wasadmin"
 }
 
 #Variable : WASDMGRNode01_was_os_users_was_ldap_user
 variable "WASDMGRNode01_was_os_users_was_ldap_user" {
   type = "string"
   description = "A flag which indicates whether to create the WebSphere user locally, or utilize an LDAP based user"
-  default = "false"
 }
 
 #Variable : WASDMGRNode01_was_os_users_was_name
 variable "WASDMGRNode01_was_os_users_was_name" {
   type = "string"
   description = "Operating system userid that will be used to install the product. Userid will be created if it does not exist"
-  default = "wasadmin"
 }
 
 #Variable : WASDMGRNode01_was_profile_dir
 variable "WASDMGRNode01_was_profile_dir" {
   type = "string"
   description = "The directory path that contains WebSphere Application Server profiles"
-  default = "/opt/IBM/WebSphere/AppServer/profiles"
 }
 
 #Variable : WASDMGRNode01_was_profiles_dmgr_cell
 variable "WASDMGRNode01_was_profiles_dmgr_cell" {
   type = "string"
   description = "A cell name is a logical name for the group of nodes administered by the deployment manager cell"
-  default = "cell01"
 }
 
 #Variable : WASDMGRNode01_was_profiles_dmgr_keystorepassword
@@ -337,14 +310,12 @@ variable "WASDMGRNode01_was_profiles_dmgr_keystorepassword" {
 variable "WASDMGRNode01_was_profiles_dmgr_profile" {
   type = "string"
   description = "WebSphere Deployment Manager profile name"
-  default = "Dmgr01"
 }
 
 #Variable : WASDMGRNode01_was_security_admin_user
 variable "WASDMGRNode01_was_security_admin_user" {
   type = "string"
   description = "The username for securing the WebSphere adminstrative console"
-  default = "wasadmin"
 }
 
 #Variable : WASDMGRNode01_was_security_admin_user_pwd
@@ -357,14 +328,12 @@ variable "WASDMGRNode01_was_security_admin_user_pwd" {
 variable "WASDMGRNode01_was_version" {
   type = "string"
   description = "The release and fixpack level of WebSphere Application Server to be installed. Example formats are 8.5.5.12 or 9.0.0.4"
-  default = "8.5.5.12"
 }
 
 #Variable : WASDMGRNode01_was_webserver_ihs_server_admin_port
 variable "WASDMGRNode01_was_webserver_ihs_server_admin_port" {
   type = "string"
   description = "IBM HTTP Administrative Server Port.  Used for creating the web server definition"
-  default = "8008"
 }
 
 #Variable : WASDMGRNode01_was_webserver_ihs_server_ihs_admin_user
@@ -377,35 +346,30 @@ variable "WASDMGRNode01_was_webserver_ihs_server_ihs_admin_user" {
 variable "WASDMGRNode01_was_webserver_ihs_server_install_dir" {
   type = "string"
   description = "Specify the HTTP Server installation directory. Used for creating the web server definition"
-  default = "/opt/IBM/HTTPServer"
 }
 
 #Variable : WASDMGRNode01_was_webserver_ihs_server_webserver_name
 variable "WASDMGRNode01_was_webserver_ihs_server_webserver_name" {
   type = "string"
   description = "Web server server name"
-  default = "webserver1"
 }
 
 #Variable : WASDMGRNode01_was_webserver_ihs_server_webserver_port
 variable "WASDMGRNode01_was_webserver_ihs_server_webserver_port" {
   type = "string"
   description = "IBM HTTP Server Listener Port that will receive requests on. Use for creating the web server definition"
-  default = "8080"
 }
 
 #Variable : WASDMGRNode01_was_wsadmin_dmgr_jvmproperty_property_value_initial
 variable "WASDMGRNode01_was_wsadmin_dmgr_jvmproperty_property_value_initial" {
   type = "string"
   description = "Minimum JVM heap size"
-  default = "256"
 }
 
 #Variable : WASDMGRNode01_was_wsadmin_dmgr_jvmproperty_property_value_maximum
 variable "WASDMGRNode01_was_wsadmin_dmgr_jvmproperty_property_value_maximum" {
   type = "string"
   description = "Maximum JVM heap size"
-  default = "512"
 }
 
 
@@ -432,56 +396,48 @@ variable "WASNode01-os_admin_user" {
 variable "WASNode01_was_install_dir" {
   type = "string"
   description = "The installation root directory for the WebSphere Application Server product binaries"
-  default = "/opt/IBM/WebSphere/AppServer"
 }
 
 #Variable : WASNode01_was_java_version
 variable "WASNode01_was_java_version" {
   type = "string"
   description = "The Java SDK version that should be installed with the WebSphere Application Server. Example format is 8.0.4.70"
-  default = "7.1.40.5"
 }
 
 #Variable : WASNode01_was_os_users_was_comment
 variable "WASNode01_was_os_users_was_comment" {
   type = "string"
   description = "Comment that will be added when creating the userid"
-  default = "WAS administrative user"
 }
 
 #Variable : WASNode01_was_os_users_was_gid
 variable "WASNode01_was_os_users_was_gid" {
   type = "string"
   description = "Operating system group name that will be assigned to the product installation"
-  default = "wasgrp"
 }
 
 #Variable : WASNode01_was_os_users_was_home
 variable "WASNode01_was_os_users_was_home" {
   type = "string"
   description = "Home directory location for operating system user that is used for product installation"
-  default = "/home/wasadmin"
 }
 
 #Variable : WASNode01_was_os_users_was_ldap_user
 variable "WASNode01_was_os_users_was_ldap_user" {
   type = "string"
   description = "A flag which indicates whether to create the WebSphere user locally, or utilize an LDAP based user"
-  default = "false"
 }
 
 #Variable : WASNode01_was_os_users_was_name
 variable "WASNode01_was_os_users_was_name" {
   type = "string"
   description = "Operating system userid that will be used to install the product. Userid will be created if it does not exist"
-  default = "wasadmin"
 }
 
 #Variable : WASNode01_was_profile_dir
 variable "WASNode01_was_profile_dir" {
   type = "string"
   description = "The directory path that contains WebSphere Application Server profiles"
-  default = "/opt/IBM/WebSphere/AppServer/profiles"
 }
 
 #Variable : WASNode01_was_profiles_node_profile_keystorepassword
@@ -494,14 +450,12 @@ variable "WASNode01_was_profiles_node_profile_keystorepassword" {
 variable "WASNode01_was_profiles_node_profile_profile" {
   type = "string"
   description = "Profile name for a custom profile"
-  default = "AppSrv01"
 }
 
 #Variable : WASNode01_was_security_admin_user
 variable "WASNode01_was_security_admin_user" {
   type = "string"
   description = "The username for securing the WebSphere adminstrative console"
-  default = "wasadmin"
 }
 
 #Variable : WASNode01_was_security_admin_user_pwd
@@ -514,35 +468,30 @@ variable "WASNode01_was_security_admin_user_pwd" {
 variable "WASNode01_was_version" {
   type = "string"
   description = "The release and fixpack level of WebSphere Application Server to be installed. Example formats are 8.5.5.12 or 9.0.0.4"
-  default = "8.5.5.12"
 }
 
 #Variable : WASNode01_was_wsadmin_clusters_cluster01_cluster_name
 variable "WASNode01_was_wsadmin_clusters_cluster01_cluster_name" {
   type = "string"
   description = "Name of the cluster that will be created"
-  default = "cluster01"
 }
 
 #Variable : WASNode01_was_wsadmin_clusters_cluster01_cluster_servers_cluster_server01_server_name
 variable "WASNode01_was_wsadmin_clusters_cluster01_cluster_servers_cluster_server01_server_name" {
   type = "string"
   description = "Name of the cluster member that will created on each of the nodes"
-  default = "server01"
 }
 
 #Variable : WASNode01_was_wsadmin_nodeagent_jvmproperty_property_value_initial
 variable "WASNode01_was_wsadmin_nodeagent_jvmproperty_property_value_initial" {
   type = "string"
   description = "Minimum JVM heap size"
-  default = "256"
 }
 
 #Variable : WASNode01_was_wsadmin_nodeagent_jvmproperty_property_value_maximum
 variable "WASNode01_was_wsadmin_nodeagent_jvmproperty_property_value_maximum" {
   type = "string"
   description = "Maximum JVM heap size"
-  default = "512"
 }
 
 
@@ -569,56 +518,48 @@ variable "WASNode02-os_admin_user" {
 variable "WASNode02_was_install_dir" {
   type = "string"
   description = "The installation root directory for the WebSphere Application Server product binaries"
-  default = "/opt/IBM/WebSphere/AppServer"
 }
 
 #Variable : WASNode02_was_java_version
 variable "WASNode02_was_java_version" {
   type = "string"
   description = "The Java SDK version that should be installed with the WebSphere Application Server. Example format is 8.0.4.70"
-  default = "7.1.40.5"
 }
 
 #Variable : WASNode02_was_os_users_was_comment
 variable "WASNode02_was_os_users_was_comment" {
   type = "string"
   description = "Comment that will be added when creating the userid"
-  default = "WAS administrative user"
 }
 
 #Variable : WASNode02_was_os_users_was_gid
 variable "WASNode02_was_os_users_was_gid" {
   type = "string"
   description = "Operating system group name that will be assigned to the product installation"
-  default = "wasgrp"
 }
 
 #Variable : WASNode02_was_os_users_was_home
 variable "WASNode02_was_os_users_was_home" {
   type = "string"
   description = "Home directory location for operating system user that is used for product installation"
-  default = "/home/wasadmin"
 }
 
 #Variable : WASNode02_was_os_users_was_ldap_user
 variable "WASNode02_was_os_users_was_ldap_user" {
   type = "string"
   description = "A flag which indicates whether to create the WebSphere user locally, or utilize an LDAP based user"
-  default = "false"
 }
 
 #Variable : WASNode02_was_os_users_was_name
 variable "WASNode02_was_os_users_was_name" {
   type = "string"
   description = "Operating system userid that will be used to install the product. Userid will be created if it does not exist"
-  default = "wasadmin"
 }
 
 #Variable : WASNode02_was_profile_dir
 variable "WASNode02_was_profile_dir" {
   type = "string"
   description = "The directory path that contains WebSphere Application Server profiles"
-  default = "/opt/IBM/WebSphere/AppServer/profiles"
 }
 
 #Variable : WASNode02_was_profiles_node_profile_keystorepassword
@@ -631,14 +572,12 @@ variable "WASNode02_was_profiles_node_profile_keystorepassword" {
 variable "WASNode02_was_profiles_node_profile_profile" {
   type = "string"
   description = "Profile name for a custom profile"
-  default = "AppSrv01"
 }
 
 #Variable : WASNode02_was_security_admin_user
 variable "WASNode02_was_security_admin_user" {
   type = "string"
   description = "The username for securing the WebSphere adminstrative console"
-  default = "wasadmin"
 }
 
 #Variable : WASNode02_was_security_admin_user_pwd
@@ -651,35 +590,30 @@ variable "WASNode02_was_security_admin_user_pwd" {
 variable "WASNode02_was_version" {
   type = "string"
   description = "The release and fixpack level of WebSphere Application Server to be installed. Example formats are 8.5.5.12 or 9.0.0.4"
-  default = "8.5.5.12"
 }
 
 #Variable : WASNode02_was_wsadmin_clusters_cluster01_cluster_name
 variable "WASNode02_was_wsadmin_clusters_cluster01_cluster_name" {
   type = "string"
   description = "Name of the cluster that will be created"
-  default = "cluster01"
 }
 
 #Variable : WASNode02_was_wsadmin_clusters_cluster01_cluster_servers_cluster_server01_server_name
 variable "WASNode02_was_wsadmin_clusters_cluster01_cluster_servers_cluster_server01_server_name" {
   type = "string"
   description = "Name of the cluster member that will created on each of the nodes"
-  default = "server01"
 }
 
 #Variable : WASNode02_was_wsadmin_nodeagent_jvmproperty_property_value_initial
 variable "WASNode02_was_wsadmin_nodeagent_jvmproperty_property_value_initial" {
   type = "string"
   description = "Minimum JVM heap size"
-  default = "256"
 }
 
 #Variable : WASNode02_was_wsadmin_nodeagent_jvmproperty_property_value_maximum
 variable "WASNode02_was_wsadmin_nodeagent_jvmproperty_property_value_maximum" {
   type = "string"
   description = "Maximum JVM heap size"
-  default = "512"
 }
 
 
@@ -706,12 +640,10 @@ variable "IHSNode01_domain" {
 
 variable "IHSNode01_number_of_vcpu" {
   description = "Number of virtual CPU for the virtual machine, which is required to be a positive Integer"
-  default = "2"
 }
 
 variable "IHSNode01_memory" {
   description = "Memory assigned to the virtual machine in megabytes. This value is required to be an increment of 1024"
-  default = "2048"
 }
 
 variable "IHSNode01_cluster" {
@@ -746,7 +678,6 @@ variable "IHSNode01_ipv4_prefix_length" {
 
 variable "IHSNode01_adapter_type" {
   description = "Network adapter type for vNIC Configuration"
-  default = "vmxnet3"
 }
 
 variable "IHSNode01_root_disk_datastore" {
@@ -756,19 +687,16 @@ variable "IHSNode01_root_disk_datastore" {
 variable "IHSNode01_root_disk_type" {
   type = "string"
   description = "Type of template disk volume"
-  default = "eager_zeroed"
 }
 
 variable "IHSNode01_root_disk_controller_type" {
   type = "string"
   description = "Type of template disk controller"
-  default = "scsi"
 }
 
 variable "IHSNode01_root_disk_keep_on_remove" {
   type = "string"
   description = "Delete template disk volume when the virtual machine is deleted"
-  default = "false"
 }
 
 # vsphere vm
@@ -1028,12 +956,10 @@ variable "WASDMGRNode01_domain" {
 
 variable "WASDMGRNode01_number_of_vcpu" {
   description = "Number of virtual CPU for the virtual machine, which is required to be a positive Integer"
-  default = "2"
 }
 
 variable "WASDMGRNode01_memory" {
   description = "Memory assigned to the virtual machine in megabytes. This value is required to be an increment of 1024"
-  default = "2048"
 }
 
 variable "WASDMGRNode01_cluster" {
@@ -1068,7 +994,6 @@ variable "WASDMGRNode01_ipv4_prefix_length" {
 
 variable "WASDMGRNode01_adapter_type" {
   description = "Network adapter type for vNIC Configuration"
-  default = "vmxnet3"
 }
 
 variable "WASDMGRNode01_root_disk_datastore" {
@@ -1078,19 +1003,16 @@ variable "WASDMGRNode01_root_disk_datastore" {
 variable "WASDMGRNode01_root_disk_type" {
   type = "string"
   description = "Type of template disk volume"
-  default = "eager_zeroed"
 }
 
 variable "WASDMGRNode01_root_disk_controller_type" {
   type = "string"
   description = "Type of template disk controller"
-  default = "scsi"
 }
 
 variable "WASDMGRNode01_root_disk_keep_on_remove" {
   type = "string"
   description = "Delete template disk volume when the virtual machine is deleted"
-  default = "false"
 }
 
 # vsphere vm
@@ -1332,7 +1254,7 @@ EOT
 #########################################################
 
 resource "camc_softwaredeploy" "WASDMGRNode01_was_v855_install" {
-  depends_on = ["camc_bootstrap.WASDMGRNode01_chef_bootstrap_comp","camc_bootstrap.WASNode01_chef_bootstrap_comp","camc_bootstrap.WASNode02_chef_bootstrap_comp","camc_bootstrap.IHSNode01_chef_bootstrap_comp"]
+  depends_on = ["camc_bootstrap.WASDMGRNode01_chef_bootstrap_comp","camc_bootstrap.IHSNode01_chef_bootstrap_comp","camc_bootstrap.WASNode01_chef_bootstrap_comp","camc_bootstrap.WASNode02_chef_bootstrap_comp"]
   name = "WASDMGRNode01_was_v855_install"
   camc_endpoint = "${var.ibm_pm_service}/v1/software_deployment/chef"
   access_token = "${var.ibm_pm_access_token}"
@@ -1418,12 +1340,10 @@ variable "WASNode01_domain" {
 
 variable "WASNode01_number_of_vcpu" {
   description = "Number of virtual CPU for the virtual machine, which is required to be a positive Integer"
-  default = "2"
 }
 
 variable "WASNode01_memory" {
   description = "Memory assigned to the virtual machine in megabytes. This value is required to be an increment of 1024"
-  default = "2048"
 }
 
 variable "WASNode01_cluster" {
@@ -1458,7 +1378,6 @@ variable "WASNode01_ipv4_prefix_length" {
 
 variable "WASNode01_adapter_type" {
   description = "Network adapter type for vNIC Configuration"
-  default = "vmxnet3"
 }
 
 variable "WASNode01_root_disk_datastore" {
@@ -1468,19 +1387,16 @@ variable "WASNode01_root_disk_datastore" {
 variable "WASNode01_root_disk_type" {
   type = "string"
   description = "Type of template disk volume"
-  default = "eager_zeroed"
 }
 
 variable "WASNode01_root_disk_controller_type" {
   type = "string"
   description = "Type of template disk controller"
-  default = "scsi"
 }
 
 variable "WASNode01_root_disk_keep_on_remove" {
   type = "string"
   description = "Delete template disk volume when the virtual machine is deleted"
-  default = "false"
 }
 
 # vsphere vm
@@ -1724,7 +1640,7 @@ EOT
 #########################################################
 
 resource "camc_softwaredeploy" "WASNode01_was_v855_install" {
-  depends_on = ["camc_bootstrap.WASDMGRNode01_chef_bootstrap_comp","camc_bootstrap.WASNode01_chef_bootstrap_comp","camc_bootstrap.WASNode02_chef_bootstrap_comp","camc_bootstrap.IHSNode01_chef_bootstrap_comp"]
+  depends_on = ["camc_bootstrap.WASDMGRNode01_chef_bootstrap_comp","camc_bootstrap.IHSNode01_chef_bootstrap_comp","camc_bootstrap.WASNode01_chef_bootstrap_comp","camc_bootstrap.WASNode02_chef_bootstrap_comp"]
   name = "WASNode01_was_v855_install"
   camc_endpoint = "${var.ibm_pm_service}/v1/software_deployment/chef"
   access_token = "${var.ibm_pm_access_token}"
@@ -1810,12 +1726,10 @@ variable "WASNode02_domain" {
 
 variable "WASNode02_number_of_vcpu" {
   description = "Number of virtual CPU for the virtual machine, which is required to be a positive Integer"
-  default = "2"
 }
 
 variable "WASNode02_memory" {
   description = "Memory assigned to the virtual machine in megabytes. This value is required to be an increment of 1024"
-  default = "2048"
 }
 
 variable "WASNode02_cluster" {
@@ -1850,7 +1764,6 @@ variable "WASNode02_ipv4_prefix_length" {
 
 variable "WASNode02_adapter_type" {
   description = "Network adapter type for vNIC Configuration"
-  default = "vmxnet3"
 }
 
 variable "WASNode02_root_disk_datastore" {
@@ -1860,19 +1773,16 @@ variable "WASNode02_root_disk_datastore" {
 variable "WASNode02_root_disk_type" {
   type = "string"
   description = "Type of template disk volume"
-  default = "eager_zeroed"
 }
 
 variable "WASNode02_root_disk_controller_type" {
   type = "string"
   description = "Type of template disk controller"
-  default = "scsi"
 }
 
 variable "WASNode02_root_disk_keep_on_remove" {
   type = "string"
   description = "Delete template disk volume when the virtual machine is deleted"
-  default = "false"
 }
 
 # vsphere vm
@@ -2116,7 +2026,7 @@ EOT
 #########################################################
 
 resource "camc_softwaredeploy" "WASNode02_was_v855_install" {
-  depends_on = ["camc_bootstrap.WASDMGRNode01_chef_bootstrap_comp","camc_bootstrap.WASNode01_chef_bootstrap_comp","camc_bootstrap.WASNode02_chef_bootstrap_comp","camc_bootstrap.IHSNode01_chef_bootstrap_comp"]
+  depends_on = ["camc_bootstrap.WASDMGRNode01_chef_bootstrap_comp","camc_bootstrap.IHSNode01_chef_bootstrap_comp","camc_bootstrap.WASNode01_chef_bootstrap_comp","camc_bootstrap.WASNode02_chef_bootstrap_comp"]
   name = "WASNode02_was_v855_install"
   camc_endpoint = "${var.ibm_pm_service}/v1/software_deployment/chef"
   access_token = "${var.ibm_pm_access_token}"
