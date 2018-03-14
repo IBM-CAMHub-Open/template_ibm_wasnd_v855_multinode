@@ -1,11 +1,11 @@
 {
-  "input_namespaces": [
+  "input_datatypes": [
     {
       "name": "advanced_content_runtime_chef",
       "label": "Advanced Content Runtime"
     }
   ],
-  "output_namespace": "content_template_output",
+  "output_datatype": "content_template_output",
   "input_groups": [
     {
       "name": "cloud",
@@ -51,6 +51,17 @@
     }
   ],
   "template_input_params": [
+    {
+      "name": "ibm_stack_id",
+      "type": "string",
+      "description": "A unique stack id.",
+      "hidden": true,
+      "label": "A unique stack id.",
+      "secured": false,
+      "required": true,
+      "immutable": false,
+      "group_name": "environment"
+    },
     {
       "name": "ibm_stack_name",
       "type": "string",
@@ -169,7 +180,7 @@
       "group_name": "cloud"
     },
     {
-      "name": "WASNode01_root_block_device_delete_on_termination",
+      "name": "WASDMGRNode01_root_block_device_delete_on_termination",
       "type": "string",
       "description": "AWS Root Block Device Delete on Termination",
       "default": "true",
@@ -192,7 +203,7 @@
       "group_name": "cloud"
     },
     {
-      "name": "WASDMGRNode01_root_block_device_delete_on_termination",
+      "name": "WASNode01_root_block_device_delete_on_termination",
       "type": "string",
       "description": "AWS Root Block Device Delete on Termination",
       "default": "true",
@@ -241,7 +252,7 @@
       "name": "WASNode01_root_block_device_volume_size",
       "type": "string",
       "description": "AWS Root Block Device Volume Size",
-      "default": 100,
+      "default": "100",
       "hidden": false,
       "label": "AWS Root Block Device Volume Size",
       "secured": false,
@@ -253,7 +264,7 @@
       "name": "WASDMGRNode01_root_block_device_volume_size",
       "type": "string",
       "description": "AWS Root Block Device Volume Size",
-      "default": 100,
+      "default": "100",
       "hidden": false,
       "label": "AWS Root Block Device Volume Size",
       "secured": false,
@@ -265,7 +276,7 @@
       "name": "IHSNode01_root_block_device_volume_size",
       "type": "string",
       "description": "AWS Root Block Device Volume Size",
-      "default": 100,
+      "default": "100",
       "hidden": false,
       "label": "AWS Root Block Device Volume Size",
       "secured": false,
@@ -277,7 +288,7 @@
       "name": "WASNode02_root_block_device_volume_size",
       "type": "string",
       "description": "AWS Root Block Device Volume Size",
-      "default": 100,
+      "default": "100",
       "hidden": false,
       "label": "AWS Root Block Device Volume Size",
       "secured": false,
@@ -286,38 +297,7 @@
       "group_name": "cloud"
     },
     {
-      "name": "WASNode01_root_block_device_volume_type",
-      "type": "string",
-      "description": "AWS Root Block Device Volume Type",
-      "default": "gp2",
-      "hidden": false,
-      "label": "AWS Root Block Device Volume Type",
-      "secured": false,
-      "options": [
-        {
-          "value": "gp2",
-          "label": "General Purpose SSD",
-          "default": "true"
-        },
-        {
-          "value": "io1",
-          "label": "Provisioned IOPS SSD"
-        },
-        {
-          "value": "st1",
-          "label": "Throughput Optimized HDD"
-        },
-        {
-          "value": "sc1",
-          "label": "Cold HDD"
-        }
-      ],
-      "required": true,
-      "immutable": false,
-      "group_name": "cloud"
-    },
-    {
-      "name": "IHSNode01_root_block_device_volume_type",
+      "name": "WASDMGRNode01_root_block_device_volume_type",
       "type": "string",
       "description": "AWS Root Block Device Volume Type",
       "default": "gp2",
@@ -379,7 +359,38 @@
       "group_name": "cloud"
     },
     {
-      "name": "WASDMGRNode01_root_block_device_volume_type",
+      "name": "IHSNode01_root_block_device_volume_type",
+      "type": "string",
+      "description": "AWS Root Block Device Volume Type",
+      "default": "gp2",
+      "hidden": false,
+      "label": "AWS Root Block Device Volume Type",
+      "secured": false,
+      "options": [
+        {
+          "value": "gp2",
+          "label": "General Purpose SSD",
+          "default": "true"
+        },
+        {
+          "value": "io1",
+          "label": "Provisioned IOPS SSD"
+        },
+        {
+          "value": "st1",
+          "label": "Throughput Optimized HDD"
+        },
+        {
+          "value": "sc1",
+          "label": "Cold HDD"
+        }
+      ],
+      "required": true,
+      "immutable": false,
+      "group_name": "cloud"
+    },
+    {
+      "name": "WASNode01_root_block_device_volume_type",
       "type": "string",
       "description": "AWS Root Block Device Volume Type",
       "default": "gp2",
@@ -421,17 +432,6 @@
       "group_name": "cloud"
     },
     {
-      "name": "WASDMGRNode01_subnet_name",
-      "type": "string",
-      "description": "AWS Subnet Name",
-      "hidden": false,
-      "label": "AWS Subnet Name",
-      "secured": false,
-      "required": true,
-      "immutable": false,
-      "group_name": "cloud"
-    },
-    {
       "name": "WASNode01_subnet_name",
       "type": "string",
       "description": "AWS Subnet Name",
@@ -455,6 +455,17 @@
     },
     {
       "name": "WASNode02_subnet_name",
+      "type": "string",
+      "description": "AWS Subnet Name",
+      "hidden": false,
+      "label": "AWS Subnet Name",
+      "secured": false,
+      "required": true,
+      "immutable": false,
+      "group_name": "cloud"
+    },
+    {
+      "name": "WASDMGRNode01_subnet_name",
       "type": "string",
       "description": "AWS Subnet Name",
       "hidden": false,
@@ -571,7 +582,7 @@
       "name": "IHSNode01_ihs_java_version",
       "type": "string",
       "description": "The Java version to be used with IBM HTTP Server",
-      "default": "8.0.4.70",
+      "default": "8.0.50.7",
       "hidden": true,
       "label": "IBM HTTP Server Java version - IHSNode01",
       "secured": false,
@@ -648,7 +659,7 @@
       "name": "IHSNode01_ihs_version",
       "type": "string",
       "description": "The version of IBM HTTP Server to install",
-      "default": "9.0.0.4",
+      "default": "8.5.5.13",
       "hidden": false,
       "label": "IBM HTTP Server install version - IHSNode01",
       "secured": false,
@@ -818,6 +829,7 @@
       "secured": false,
       "required": true,
       "immutable": true,
+      "immutable_after_create": true,
       "group_name": "environment",
       "default": "${advanced_content_runtime_chef.ibm_im_repo}"
     },
@@ -843,6 +855,7 @@
       "secured": false,
       "required": true,
       "immutable": true,
+      "immutable_after_create": true,
       "group_name": "environment"
     },
     {
@@ -854,6 +867,7 @@
       "secured": true,
       "required": true,
       "immutable": true,
+      "immutable_after_create": true,
       "group_name": "environment",
       "default": "${advanced_content_runtime_chef.ibm_sw_repo_password}"
     },
@@ -866,6 +880,7 @@
       "secured": false,
       "required": true,
       "immutable": true,
+      "immutable_after_create": true,
       "group_name": "environment",
       "default": "${advanced_content_runtime_chef.ibm_sw_repo}"
     },
@@ -879,6 +894,7 @@
       "secured": false,
       "required": true,
       "immutable": true,
+      "immutable_after_create": true,
       "group_name": "environment"
     },
     {
@@ -1038,28 +1054,6 @@
       "group_name": "virtualmachine"
     },
     {
-      "name": "IHSNode01-mgmt-network-public",
-      "type": "string",
-      "description": "Expose and use public IP of virtual machine for internal communication",
-      "default": "true",
-      "hidden": false,
-      "label": "Use Public Management Network",
-      "secured": false,
-      "options": [
-        {
-          "value": false,
-          "label": false
-        },
-        {
-          "value": true,
-          "label": true
-        }
-      ],
-      "required": true,
-      "immutable": false,
-      "group_name": "virtualmachine"
-    },
-    {
       "name": "WASNode02-mgmt-network-public",
       "type": "string",
       "description": "Expose and use public IP of virtual machine for internal communication",
@@ -1083,6 +1077,28 @@
     },
     {
       "name": "WASNode01-mgmt-network-public",
+      "type": "string",
+      "description": "Expose and use public IP of virtual machine for internal communication",
+      "default": "true",
+      "hidden": false,
+      "label": "Use Public Management Network",
+      "secured": false,
+      "options": [
+        {
+          "value": false,
+          "label": false
+        },
+        {
+          "value": true,
+          "label": true
+        }
+      ],
+      "required": true,
+      "immutable": false,
+      "group_name": "virtualmachine"
+    },
+    {
+      "name": "IHSNode01-mgmt-network-public",
       "type": "string",
       "description": "Expose and use public IP of virtual machine for internal communication",
       "default": "true",
@@ -1177,8 +1193,8 @@
     {
       "name": "WASDMGRNode01_was_version",
       "type": "string",
-      "description": "The release and fixpack level of WebSphere Application Server to be installed. Example formats are 8.5.5.12 or 9.0.0.4",
-      "default": "8.5.5.12",
+      "description": "The release and fixpack level of WebSphere Application Server to be installed. Example formats are 8.5.5.13 or 9.0.0.6",
+      "default": "8.5.5.13",
       "hidden": false,
       "label": "WebSphere Application Server Version - WASDMGRNode01",
       "secured": false,
@@ -1230,7 +1246,7 @@
       "name": "WASDMGRNode01_was_java_version",
       "type": "string",
       "description": "The Java SDK version that should be installed with the WebSphere Application Server. Example format is 8.0.4.70",
-      "default": "7.1.40.5",
+      "default": "7.1.4.15",
       "hidden": false,
       "label": "WebSphere Java SDK version - WASDMGRNode01",
       "secured": false,
@@ -1294,7 +1310,7 @@
       "type": "string",
       "description": "Operating system userid that will be used to install the product. Userid will be created if it does not exist",
       "default": "wasadmin",
-      "hidden": true,
+      "hidden": false,
       "label": "WebSphere installation userid - WASDMGRNode01",
       "secured": false,
       "required": true,
@@ -1383,7 +1399,7 @@
       "type": "string",
       "description": "Operating system group name that will be assigned to the product installation",
       "default": "wasgrp",
-      "hidden": true,
+      "hidden": false,
       "label": "WebSphere user group name - WASDMGRNode01",
       "secured": false,
       "required": true,
@@ -1441,8 +1457,8 @@
     {
       "name": "WASNode01_was_version",
       "type": "string",
-      "description": "The release and fixpack level of WebSphere Application Server to be installed. Example formats are 8.5.5.12 or 9.0.0.4",
-      "default": "8.5.5.12",
+      "description": "The release and fixpack level of WebSphere Application Server to be installed. Example formats are 8.5.5.13 or 9.0.0.6",
+      "default": "8.5.5.13",
       "hidden": false,
       "label": "WebSphere Application Server Version - WASNode01",
       "secured": false,
@@ -1494,7 +1510,7 @@
       "name": "WASNode01_was_java_version",
       "type": "string",
       "description": "The Java SDK version that should be installed with the WebSphere Application Server. Example format is 8.0.4.70",
-      "default": "7.1.40.5",
+      "default": "7.1.4.15",
       "hidden": false,
       "label": "WebSphere Java SDK version - WASNode01",
       "secured": false,
@@ -1571,7 +1587,7 @@
       "type": "string",
       "description": "Operating system userid that will be used to install the product. Userid will be created if it does not exist",
       "default": "wasadmin",
-      "hidden": true,
+      "hidden": false,
       "label": "WebSphere installation userid - WASNode01",
       "secured": false,
       "required": true,
@@ -1660,7 +1676,7 @@
       "type": "string",
       "description": "Operating system group name that will be assigned to the product installation",
       "default": "wasgrp",
-      "hidden": true,
+      "hidden": false,
       "label": "WebSphere user group name - WASNode01",
       "secured": false,
       "required": true,
@@ -1705,8 +1721,8 @@
     {
       "name": "WASNode02_was_version",
       "type": "string",
-      "description": "The release and fixpack level of WebSphere Application Server to be installed. Example formats are 8.5.5.12 or 9.0.0.4",
-      "default": "8.5.5.12",
+      "description": "The release and fixpack level of WebSphere Application Server to be installed. Example formats are 8.5.5.13 or 9.0.0.6",
+      "default": "8.5.5.13",
       "hidden": false,
       "label": "WebSphere Application Server Version - WASNode02",
       "secured": false,
@@ -1758,7 +1774,7 @@
       "name": "WASNode02_was_java_version",
       "type": "string",
       "description": "The Java SDK version that should be installed with the WebSphere Application Server. Example format is 8.0.4.70",
-      "default": "7.1.40.5",
+      "default": "7.1.4.15",
       "hidden": false,
       "label": "WebSphere Java SDK version - WASNode02",
       "secured": false,
@@ -1835,7 +1851,7 @@
       "type": "string",
       "description": "Operating system userid that will be used to install the product. Userid will be created if it does not exist",
       "default": "wasadmin",
-      "hidden": true,
+      "hidden": false,
       "label": "WebSphere installation userid - WASNode02",
       "secured": false,
       "required": true,
@@ -1924,7 +1940,7 @@
       "type": "string",
       "description": "Operating system group name that will be assigned to the product installation",
       "default": "wasgrp",
-      "hidden": true,
+      "hidden": false,
       "label": "WebSphere user group name - WASNode02",
       "secured": false,
       "required": true,

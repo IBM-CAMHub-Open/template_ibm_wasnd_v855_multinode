@@ -1,11 +1,11 @@
 {
-  "input_namespaces": [
+  "input_datatypes": [
     {
       "name": "advanced_content_runtime_chef",
       "label": "Advanced Content Runtime"
     }
   ],
-  "output_namespace": "content_template_output",
+  "output_datatype": "content_template_output",
   "input_groups": [
     {
       "name": "cloud",
@@ -51,6 +51,17 @@
     }
   ],
   "template_input_params": [
+    {
+      "name": "ibm_stack_id",
+      "type": "string",
+      "description": "A unique stack id.",
+      "hidden": true,
+      "label": "A unique stack id.",
+      "secured": false,
+      "required": true,
+      "immutable": false,
+      "group_name": "environment"
+    },
     {
       "name": "ibm_stack_name",
       "type": "string",
@@ -134,7 +145,7 @@
       "name": "IHSNode01_ihs_java_version",
       "type": "string",
       "description": "The Java version to be used with IBM HTTP Server",
-      "default": "8.0.4.70",
+      "default": "8.0.50.7",
       "hidden": true,
       "label": "IBM HTTP Server Java version - IHSNode01",
       "secured": false,
@@ -211,7 +222,7 @@
       "name": "IHSNode01_ihs_version",
       "type": "string",
       "description": "The version of IBM HTTP Server to install",
-      "default": "9.0.0.4",
+      "default": "8.5.5.13",
       "hidden": false,
       "label": "IBM HTTP Server install version - IHSNode01",
       "secured": false,
@@ -349,6 +360,107 @@
       "group_name": "ihsnode01"
     },
     {
+      "name": "ibm_pm_access_token",
+      "type": "string",
+      "description": "IBM Pattern Manager Access Token",
+      "hidden": true,
+      "label": "IBM Pattern Manager Access Token",
+      "secured": true,
+      "required": true,
+      "immutable": true,
+      "group_name": "environment",
+      "default": "${advanced_content_runtime_chef.ibm_pm_access_token}"
+    },
+    {
+      "name": "ibm_pm_service",
+      "type": "string",
+      "description": "IBM Pattern Manager Service",
+      "hidden": true,
+      "label": "IBM Pattern Manager Service",
+      "secured": false,
+      "required": true,
+      "immutable": true,
+      "group_name": "environment",
+      "default": "${advanced_content_runtime_chef.ibm_pm_service}"
+    },
+    {
+      "name": "ibm_im_repo",
+      "type": "string",
+      "description": "IBM Software  Installation Manager Repository URL (https://<hostname/IP>:<port>/IMRepo) ",
+      "hidden": true,
+      "label": "IBM Software Installation Manager Repository",
+      "secured": false,
+      "required": true,
+      "immutable": true,
+      "immutable_after_create": true,
+      "group_name": "environment",
+      "default": "${advanced_content_runtime_chef.ibm_im_repo}"
+    },
+    {
+      "name": "ibm_im_repo_password",
+      "type": "string",
+      "description": "IBM Software  Installation Manager Repository Password",
+      "hidden": true,
+      "label": "IBM Software Installation Manager Repository Password",
+      "secured": true,
+      "required": true,
+      "immutable": true,
+      "group_name": "environment",
+      "default": "${advanced_content_runtime_chef.ibm_im_repo_password}"
+    },
+    {
+      "name": "ibm_im_repo_user",
+      "type": "string",
+      "description": "IBM Software  Installation Manager Repository username",
+      "default": "${advanced_content_runtime_chef.ibm_im_repo_user}",
+      "hidden": true,
+      "label": "IBM Software Installation Manager Repository Username",
+      "secured": false,
+      "required": true,
+      "immutable": true,
+      "immutable_after_create": true,
+      "group_name": "environment"
+    },
+    {
+      "name": "ibm_sw_repo_password",
+      "type": "string",
+      "description": "IBM Software Repo Password",
+      "hidden": true,
+      "label": "IBM Software Repo Password",
+      "secured": true,
+      "required": true,
+      "immutable": true,
+      "immutable_after_create": true,
+      "group_name": "environment",
+      "default": "${advanced_content_runtime_chef.ibm_sw_repo_password}"
+    },
+    {
+      "name": "ibm_sw_repo",
+      "type": "string",
+      "description": "IBM Software Repo Root (https://<hostname>:<port>)",
+      "hidden": true,
+      "label": "IBM Software Repo Root",
+      "secured": false,
+      "required": true,
+      "immutable": true,
+      "immutable_after_create": true,
+      "group_name": "environment",
+      "default": "${advanced_content_runtime_chef.ibm_sw_repo}"
+    },
+    {
+      "name": "ibm_sw_repo_user",
+      "type": "string",
+      "description": "IBM Software Repo Username",
+      "default": "${advanced_content_runtime_chef.ibm_sw_repo_user}",
+      "hidden": true,
+      "label": "IBM Software Repo Username",
+      "secured": false,
+      "required": true,
+      "immutable": true,
+      "immutable_after_create": true,
+      "group_name": "environment"
+    },
+    {
       "name": "IHSNode01-image",
       "type": "string",
       "description": "Operating system image id / template that should be used when creating the virtual image",
@@ -382,52 +494,48 @@
       "group_name": "virtualmachine"
     },
     {
+      "name": "ibm_pm_private_ssh_key",
+      "type": "string",
+      "description": "Private CAMC SSH key (base64 encoded) used to connect to the virtual guest.",
+      "hidden": true,
+      "label": "Private CAMC SSH key (base64 encoded) used to connect to the virtual guest.",
+      "secured": true,
+      "required": true,
+      "immutable": true,
+      "group_name": "environment",
+      "default": "${advanced_content_runtime_chef.ibm_pm_private_ssh_key}"
+    },
+    {
+      "name": "ibm_pm_public_ssh_key",
+      "type": "string",
+      "description": "Public CAMC SSH key value which is used to connect to a guest, used on VMware only.",
+      "hidden": true,
+      "label": "Public CAMC SSH key value which is used to connect to a guest, used on VMware only.",
+      "secured": false,
+      "required": true,
+      "immutable": false,
+      "group_name": "environment",
+      "default": "${advanced_content_runtime_chef.ibm_pm_public_ssh_key}"
+    },
+    {
+      "name": "IHSNode01_root_disk_size",
+      "type": "string",
+      "description": "Size of template disk volume. Should be equal to template's disk size",
+      "default": "100",
+      "hidden": false,
+      "label": "Root Disk Size - IHSNode01",
+      "secured": false,
+      "required": true,
+      "immutable": false,
+      "group_name": "virtualmachine"
+    },
+    {
       "name": "IHSNode01-name",
       "type": "string",
       "description": "Short hostname of virtual machine",
       "hidden": false,
       "label": "Short hostname - IHSNode01",
       "secured": false,
-      "required": true,
-      "immutable": false,
-      "immutable_after_create": true,
-      "group_name": "virtualmachine"
-    },
-    {
-      "name": "IHSNode01_root_disk_controller_type",
-      "type": "string",
-      "description": "Type of template disk controller",
-      "default": "scsi",
-      "hidden": false,
-      "label": "Template Disk Controller - IHSNode01",
-      "secured": false,
-      "options": [
-        {
-          "value": "scsi",
-          "label": "scsi",
-          "default": "true"
-        },
-        {
-          "value": "scsi-lsi-parallel",
-          "label": "scsi-lsi-parallel"
-        },
-        {
-          "value": "scsi-buslogic",
-          "label": "scsi-buslogic"
-        },
-        {
-          "value": "scsi-paravirtual",
-          "label": "scsi-paravirtual"
-        },
-        {
-          "value": "scsi-isi-sas",
-          "label": "scsi-isi-sas"
-        },
-        {
-          "value": "ide",
-          "label": "ide"
-        }
-      ],
       "required": true,
       "immutable": false,
       "group_name": "virtualmachine"
@@ -439,34 +547,6 @@
       "hidden": false,
       "label": "Template Disk Datastore - IHSNode01",
       "secured": false,
-      "required": true,
-      "immutable": false,
-      "group_name": "virtualmachine"
-    },
-    {
-      "name": "IHSNode01_root_disk_type",
-      "type": "string",
-      "description": "Type of template disk volume",
-      "default": "eager_zeroed",
-      "hidden": false,
-      "label": "Template Disk Type - IHSNode01",
-      "secured": false,
-      "options": [
-        {
-          "value": "eager_zeroed",
-          "label": "Thick Provision Eager Zeroed",
-          "default": "true"
-        },
-        {
-          "value": "lazy",
-          "label": "Thick Provision Lazy Zeroed"
-        },
-        {
-          "value": "thin",
-          "label": "Thin Provision",
-          "group_name": "virtualmachine"
-        }
-      ],
       "required": true,
       "immutable": false,
       "group_name": "virtualmachine"
@@ -546,7 +626,7 @@
       "hidden": false,
       "label": "vSphere Cluster - IHSNode01",
       "secured": false,
-      "required": true,
+      "required": false,
       "immutable": false,
       "group_name": "cloud"
     },
@@ -557,7 +637,7 @@
       "hidden": false,
       "label": "vSphere Datacenter - IHSNode01",
       "secured": false,
-      "required": true,
+      "required": false,
       "immutable": false,
       "group_name": "cloud"
     },
@@ -568,7 +648,7 @@
       "hidden": false,
       "label": "vSphere Folder Name - IHSNode01",
       "secured": false,
-      "required": true,
+      "required": false,
       "immutable": false,
       "group_name": "cloud"
     },
@@ -591,6 +671,17 @@
           "default": "e1000"
         }
       ],
+      "required": true,
+      "immutable": false,
+      "group_name": "virtualmachine"
+    },
+    {
+      "name": "IHSNode01_resource_pool",
+      "type": "string",
+      "description": "Target vSphere Resource Pool to host the virtual machine",
+      "hidden": false,
+      "label": "vSphere Resource Pool - IHSNode01",
+      "secured": false,
       "required": true,
       "immutable": false,
       "group_name": "virtualmachine"
@@ -750,52 +841,24 @@
       "group_name": "virtualmachine"
     },
     {
+      "name": "WASDMGRNode01_root_disk_size",
+      "type": "string",
+      "description": "Size of template disk volume. Should be equal to template's disk size",
+      "default": "100",
+      "hidden": false,
+      "label": "Root Disk Size - WASDMGRNode01",
+      "secured": false,
+      "required": true,
+      "immutable": false,
+      "group_name": "virtualmachine"
+    },
+    {
       "name": "WASDMGRNode01-name",
       "type": "string",
       "description": "Short hostname of virtual machine",
       "hidden": false,
       "label": "Short hostname - WASDMGRNode01",
       "secured": false,
-      "required": true,
-      "immutable": false,
-      "immutable_after_create": true,
-      "group_name": "virtualmachine"
-    },
-    {
-      "name": "WASDMGRNode01_root_disk_controller_type",
-      "type": "string",
-      "description": "Type of template disk controller",
-      "default": "scsi",
-      "hidden": false,
-      "label": "Template Disk Controller - WASDMGRNode01",
-      "secured": false,
-      "options": [
-        {
-          "value": "scsi",
-          "label": "scsi",
-          "default": "true"
-        },
-        {
-          "value": "scsi-lsi-parallel",
-          "label": "scsi-lsi-parallel"
-        },
-        {
-          "value": "scsi-buslogic",
-          "label": "scsi-buslogic"
-        },
-        {
-          "value": "scsi-paravirtual",
-          "label": "scsi-paravirtual"
-        },
-        {
-          "value": "scsi-isi-sas",
-          "label": "scsi-isi-sas"
-        },
-        {
-          "value": "ide",
-          "label": "ide"
-        }
-      ],
       "required": true,
       "immutable": false,
       "group_name": "virtualmachine"
@@ -807,34 +870,6 @@
       "hidden": false,
       "label": "Template Disk Datastore - WASDMGRNode01",
       "secured": false,
-      "required": true,
-      "immutable": false,
-      "group_name": "virtualmachine"
-    },
-    {
-      "name": "WASDMGRNode01_root_disk_type",
-      "type": "string",
-      "description": "Type of template disk volume",
-      "default": "eager_zeroed",
-      "hidden": false,
-      "label": "Template Disk Type - WASDMGRNode01",
-      "secured": false,
-      "options": [
-        {
-          "value": "eager_zeroed",
-          "label": "Thick Provision Eager Zeroed",
-          "default": "true"
-        },
-        {
-          "value": "lazy",
-          "label": "Thick Provision Lazy Zeroed"
-        },
-        {
-          "value": "thin",
-          "label": "Thin Provision",
-          "group_name": "virtualmachine"
-        }
-      ],
       "required": true,
       "immutable": false,
       "group_name": "virtualmachine"
@@ -910,8 +945,8 @@
     {
       "name": "WASDMGRNode01_was_version",
       "type": "string",
-      "description": "The release and fixpack level of WebSphere Application Server to be installed. Example formats are 8.5.5.12 or 9.0.0.4",
-      "default": "8.5.5.12",
+      "description": "The release and fixpack level of WebSphere Application Server to be installed. Example formats are 8.5.5.13 or 9.0.0.6",
+      "default": "8.5.5.13",
       "hidden": false,
       "label": "WebSphere Application Server Version - WASDMGRNode01",
       "secured": false,
@@ -963,7 +998,7 @@
       "name": "WASDMGRNode01_was_java_version",
       "type": "string",
       "description": "The Java SDK version that should be installed with the WebSphere Application Server. Example format is 8.0.4.70",
-      "default": "7.1.40.5",
+      "default": "7.1.4.15",
       "hidden": false,
       "label": "WebSphere Java SDK version - WASDMGRNode01",
       "secured": false,
@@ -1027,7 +1062,7 @@
       "type": "string",
       "description": "Operating system userid that will be used to install the product. Userid will be created if it does not exist",
       "default": "wasadmin",
-      "hidden": true,
+      "hidden": false,
       "label": "WebSphere installation userid - WASDMGRNode01",
       "secured": false,
       "required": true,
@@ -1116,7 +1151,7 @@
       "type": "string",
       "description": "Operating system group name that will be assigned to the product installation",
       "default": "wasgrp",
-      "hidden": true,
+      "hidden": false,
       "label": "WebSphere user group name - WASDMGRNode01",
       "secured": false,
       "required": true,
@@ -1144,7 +1179,7 @@
       "hidden": false,
       "label": "vSphere Cluster - WASDMGRNode01",
       "secured": false,
-      "required": true,
+      "required": false,
       "immutable": false,
       "group_name": "cloud"
     },
@@ -1155,7 +1190,7 @@
       "hidden": false,
       "label": "vSphere Datacenter - WASDMGRNode01",
       "secured": false,
-      "required": true,
+      "required": false,
       "immutable": false,
       "group_name": "cloud"
     },
@@ -1166,7 +1201,7 @@
       "hidden": false,
       "label": "vSphere Folder Name - WASDMGRNode01",
       "secured": false,
-      "required": true,
+      "required": false,
       "immutable": false,
       "group_name": "cloud"
     },
@@ -1189,6 +1224,17 @@
           "default": "e1000"
         }
       ],
+      "required": true,
+      "immutable": false,
+      "group_name": "virtualmachine"
+    },
+    {
+      "name": "WASDMGRNode01_resource_pool",
+      "type": "string",
+      "description": "Target vSphere Resource Pool to host the virtual machine",
+      "hidden": false,
+      "label": "vSphere Resource Pool - WASDMGRNode01",
+      "secured": false,
       "required": true,
       "immutable": false,
       "group_name": "virtualmachine"
@@ -1283,52 +1329,24 @@
       "group_name": "virtualmachine"
     },
     {
+      "name": "WASNode01_root_disk_size",
+      "type": "string",
+      "description": "Size of template disk volume. Should be equal to template's disk size",
+      "default": "100",
+      "hidden": false,
+      "label": "Root Disk Size - WASNode01",
+      "secured": false,
+      "required": true,
+      "immutable": false,
+      "group_name": "virtualmachine"
+    },
+    {
       "name": "WASNode01-name",
       "type": "string",
       "description": "Short hostname of virtual machine",
       "hidden": false,
       "label": "Short hostname - WASNode01",
       "secured": false,
-      "required": true,
-      "immutable": false,
-      "immutable_after_create": true,
-      "group_name": "virtualmachine"
-    },
-    {
-      "name": "WASNode01_root_disk_controller_type",
-      "type": "string",
-      "description": "Type of template disk controller",
-      "default": "scsi",
-      "hidden": false,
-      "label": "Template Disk Controller - WASNode01",
-      "secured": false,
-      "options": [
-        {
-          "value": "scsi",
-          "label": "scsi",
-          "default": "true"
-        },
-        {
-          "value": "scsi-lsi-parallel",
-          "label": "scsi-lsi-parallel"
-        },
-        {
-          "value": "scsi-buslogic",
-          "label": "scsi-buslogic"
-        },
-        {
-          "value": "scsi-paravirtual",
-          "label": "scsi-paravirtual"
-        },
-        {
-          "value": "scsi-isi-sas",
-          "label": "scsi-isi-sas"
-        },
-        {
-          "value": "ide",
-          "label": "ide"
-        }
-      ],
       "required": true,
       "immutable": false,
       "group_name": "virtualmachine"
@@ -1340,34 +1358,6 @@
       "hidden": false,
       "label": "Template Disk Datastore - WASNode01",
       "secured": false,
-      "required": true,
-      "immutable": false,
-      "group_name": "virtualmachine"
-    },
-    {
-      "name": "WASNode01_root_disk_type",
-      "type": "string",
-      "description": "Type of template disk volume",
-      "default": "eager_zeroed",
-      "hidden": false,
-      "label": "Template Disk Type - WASNode01",
-      "secured": false,
-      "options": [
-        {
-          "value": "eager_zeroed",
-          "label": "Thick Provision Eager Zeroed",
-          "default": "true"
-        },
-        {
-          "value": "lazy",
-          "label": "Thick Provision Lazy Zeroed"
-        },
-        {
-          "value": "thin",
-          "label": "Thin Provision",
-          "group_name": "virtualmachine"
-        }
-      ],
       "required": true,
       "immutable": false,
       "group_name": "virtualmachine"
@@ -1443,8 +1433,8 @@
     {
       "name": "WASNode01_was_version",
       "type": "string",
-      "description": "The release and fixpack level of WebSphere Application Server to be installed. Example formats are 8.5.5.12 or 9.0.0.4",
-      "default": "8.5.5.12",
+      "description": "The release and fixpack level of WebSphere Application Server to be installed. Example formats are 8.5.5.13 or 9.0.0.6",
+      "default": "8.5.5.13",
       "hidden": false,
       "label": "WebSphere Application Server Version - WASNode01",
       "secured": false,
@@ -1496,7 +1486,7 @@
       "name": "WASNode01_was_java_version",
       "type": "string",
       "description": "The Java SDK version that should be installed with the WebSphere Application Server. Example format is 8.0.4.70",
-      "default": "7.1.40.5",
+      "default": "7.1.4.15",
       "hidden": false,
       "label": "WebSphere Java SDK version - WASNode01",
       "secured": false,
@@ -1573,7 +1563,7 @@
       "type": "string",
       "description": "Operating system userid that will be used to install the product. Userid will be created if it does not exist",
       "default": "wasadmin",
-      "hidden": true,
+      "hidden": false,
       "label": "WebSphere installation userid - WASNode01",
       "secured": false,
       "required": true,
@@ -1662,7 +1652,7 @@
       "type": "string",
       "description": "Operating system group name that will be assigned to the product installation",
       "default": "wasgrp",
-      "hidden": true,
+      "hidden": false,
       "label": "WebSphere user group name - WASNode01",
       "secured": false,
       "required": true,
@@ -1677,7 +1667,7 @@
       "hidden": false,
       "label": "vSphere Cluster - WASNode01",
       "secured": false,
-      "required": true,
+      "required": false,
       "immutable": false,
       "group_name": "cloud"
     },
@@ -1688,7 +1678,7 @@
       "hidden": false,
       "label": "vSphere Datacenter - WASNode01",
       "secured": false,
-      "required": true,
+      "required": false,
       "immutable": false,
       "group_name": "cloud"
     },
@@ -1699,7 +1689,7 @@
       "hidden": false,
       "label": "vSphere Folder Name - WASNode01",
       "secured": false,
-      "required": true,
+      "required": false,
       "immutable": false,
       "group_name": "cloud"
     },
@@ -1722,6 +1712,17 @@
           "default": "e1000"
         }
       ],
+      "required": true,
+      "immutable": false,
+      "group_name": "virtualmachine"
+    },
+    {
+      "name": "WASNode01_resource_pool",
+      "type": "string",
+      "description": "Target vSphere Resource Pool to host the virtual machine",
+      "hidden": false,
+      "label": "vSphere Resource Pool - WASNode01",
+      "secured": false,
       "required": true,
       "immutable": false,
       "group_name": "virtualmachine"
@@ -1783,102 +1784,6 @@
       "group_name": "virtualmachine"
     },
     {
-      "name": "ibm_pm_access_token",
-      "type": "string",
-      "description": "IBM Pattern Manager Access Token",
-      "hidden": true,
-      "label": "IBM Pattern Manager Access Token",
-      "secured": true,
-      "required": true,
-      "immutable": true,
-      "group_name": "environment",
-      "default": "${advanced_content_runtime_chef.ibm_pm_access_token}"
-    },
-    {
-      "name": "ibm_pm_service",
-      "type": "string",
-      "description": "IBM Pattern Manager Service",
-      "hidden": true,
-      "label": "IBM Pattern Manager Service",
-      "secured": false,
-      "required": true,
-      "immutable": true,
-      "group_name": "environment",
-      "default": "${advanced_content_runtime_chef.ibm_pm_service}"
-    },
-    {
-      "name": "ibm_im_repo",
-      "type": "string",
-      "description": "IBM Software  Installation Manager Repository URL (https://<hostname/IP>:<port>/IMRepo) ",
-      "hidden": true,
-      "label": "IBM Software Installation Manager Repository",
-      "secured": false,
-      "required": true,
-      "immutable": true,
-      "group_name": "environment",
-      "default": "${advanced_content_runtime_chef.ibm_im_repo}"
-    },
-    {
-      "name": "ibm_im_repo_password",
-      "type": "string",
-      "description": "IBM Software  Installation Manager Repository Password",
-      "hidden": true,
-      "label": "IBM Software Installation Manager Repository Password",
-      "secured": true,
-      "required": true,
-      "immutable": true,
-      "group_name": "environment",
-      "default": "${advanced_content_runtime_chef.ibm_im_repo_password}"
-    },
-    {
-      "name": "ibm_im_repo_user",
-      "type": "string",
-      "description": "IBM Software  Installation Manager Repository username",
-      "default": "${advanced_content_runtime_chef.ibm_im_repo_user}",
-      "hidden": true,
-      "label": "IBM Software Installation Manager Repository Username",
-      "secured": false,
-      "required": true,
-      "immutable": true,
-      "group_name": "environment"
-    },
-    {
-      "name": "ibm_sw_repo_password",
-      "type": "string",
-      "description": "IBM Software Repo Password",
-      "hidden": true,
-      "label": "IBM Software Repo Password",
-      "secured": true,
-      "required": true,
-      "immutable": true,
-      "group_name": "environment",
-      "default": "${advanced_content_runtime_chef.ibm_sw_repo_password}"
-    },
-    {
-      "name": "ibm_sw_repo",
-      "type": "string",
-      "description": "IBM Software Repo Root (https://<hostname>:<port>)",
-      "hidden": true,
-      "label": "IBM Software Repo Root",
-      "secured": false,
-      "required": true,
-      "immutable": true,
-      "group_name": "environment",
-      "default": "${advanced_content_runtime_chef.ibm_sw_repo}"
-    },
-    {
-      "name": "ibm_sw_repo_user",
-      "type": "string",
-      "description": "IBM Software Repo Username",
-      "default": "${advanced_content_runtime_chef.ibm_sw_repo_user}",
-      "hidden": true,
-      "label": "IBM Software Repo Username",
-      "secured": false,
-      "required": true,
-      "immutable": true,
-      "group_name": "environment"
-    },
-    {
       "name": "WASNode02-image",
       "type": "string",
       "description": "Operating system image id / template that should be used when creating the virtual image",
@@ -1912,28 +1817,16 @@
       "group_name": "virtualmachine"
     },
     {
-      "name": "ibm_pm_private_ssh_key",
+      "name": "WASNode02_root_disk_size",
       "type": "string",
-      "description": "Private CAMC SSH key (base64 encoded) used to connect to the virtual guest.",
-      "hidden": true,
-      "label": "Private CAMC SSH key (base64 encoded) used to connect to the virtual guest.",
-      "secured": true,
-      "required": true,
-      "immutable": true,
-      "group_name": "environment",
-      "default": "${advanced_content_runtime_chef.ibm_pm_private_ssh_key}"
-    },
-    {
-      "name": "ibm_pm_public_ssh_key",
-      "type": "string",
-      "description": "Public CAMC SSH key value which is used to connect to a guest, used on VMware only.",
-      "hidden": true,
-      "label": "Public CAMC SSH key value which is used to connect to a guest, used on VMware only.",
+      "description": "Size of template disk volume. Should be equal to template's disk size",
+      "default": "100",
+      "hidden": false,
+      "label": "Root Disk Size - WASNode02",
       "secured": false,
       "required": true,
       "immutable": false,
-      "group_name": "environment",
-      "default": "${advanced_content_runtime_chef.ibm_pm_public_ssh_key}"
+      "group_name": "virtualmachine"
     },
     {
       "name": "WASNode02-name",
@@ -1942,46 +1835,6 @@
       "hidden": false,
       "label": "Short hostname - WASNode02",
       "secured": false,
-      "required": true,
-      "immutable": false,
-      "immutable_after_create": true,
-      "group_name": "virtualmachine"
-    },
-    {
-      "name": "WASNode02_root_disk_controller_type",
-      "type": "string",
-      "description": "Type of template disk controller",
-      "default": "scsi",
-      "hidden": false,
-      "label": "Template Disk Controller - WASNode02",
-      "secured": false,
-      "options": [
-        {
-          "value": "scsi",
-          "label": "scsi",
-          "default": "true"
-        },
-        {
-          "value": "scsi-lsi-parallel",
-          "label": "scsi-lsi-parallel"
-        },
-        {
-          "value": "scsi-buslogic",
-          "label": "scsi-buslogic"
-        },
-        {
-          "value": "scsi-paravirtual",
-          "label": "scsi-paravirtual"
-        },
-        {
-          "value": "scsi-isi-sas",
-          "label": "scsi-isi-sas"
-        },
-        {
-          "value": "ide",
-          "label": "ide"
-        }
-      ],
       "required": true,
       "immutable": false,
       "group_name": "virtualmachine"
@@ -1993,34 +1846,6 @@
       "hidden": false,
       "label": "Template Disk Datastore - WASNode02",
       "secured": false,
-      "required": true,
-      "immutable": false,
-      "group_name": "virtualmachine"
-    },
-    {
-      "name": "WASNode02_root_disk_type",
-      "type": "string",
-      "description": "Type of template disk volume",
-      "default": "eager_zeroed",
-      "hidden": false,
-      "label": "Template Disk Type - WASNode02",
-      "secured": false,
-      "options": [
-        {
-          "value": "eager_zeroed",
-          "label": "Thick Provision Eager Zeroed",
-          "default": "true"
-        },
-        {
-          "value": "lazy",
-          "label": "Thick Provision Lazy Zeroed"
-        },
-        {
-          "value": "thin",
-          "label": "Thin Provision",
-          "group_name": "virtualmachine"
-        }
-      ],
       "required": true,
       "immutable": false,
       "group_name": "virtualmachine"
@@ -2096,8 +1921,8 @@
     {
       "name": "WASNode02_was_version",
       "type": "string",
-      "description": "The release and fixpack level of WebSphere Application Server to be installed. Example formats are 8.5.5.12 or 9.0.0.4",
-      "default": "8.5.5.12",
+      "description": "The release and fixpack level of WebSphere Application Server to be installed. Example formats are 8.5.5.13 or 9.0.0.6",
+      "default": "8.5.5.13",
       "hidden": false,
       "label": "WebSphere Application Server Version - WASNode02",
       "secured": false,
@@ -2149,7 +1974,7 @@
       "name": "WASNode02_was_java_version",
       "type": "string",
       "description": "The Java SDK version that should be installed with the WebSphere Application Server. Example format is 8.0.4.70",
-      "default": "7.1.40.5",
+      "default": "7.1.4.15",
       "hidden": false,
       "label": "WebSphere Java SDK version - WASNode02",
       "secured": false,
@@ -2226,7 +2051,7 @@
       "type": "string",
       "description": "Operating system userid that will be used to install the product. Userid will be created if it does not exist",
       "default": "wasadmin",
-      "hidden": true,
+      "hidden": false,
       "label": "WebSphere installation userid - WASNode02",
       "secured": false,
       "required": true,
@@ -2315,11 +2140,12 @@
       "type": "string",
       "description": "Operating system group name that will be assigned to the product installation",
       "default": "wasgrp",
-      "hidden": true,
+      "hidden": false,
       "label": "WebSphere user group name - WASNode02",
       "secured": false,
       "required": true,
       "immutable": false,
+      "immutable_after_create": true,
       "group_name": "wasnode02"
     },
     {
@@ -2329,7 +2155,7 @@
       "hidden": false,
       "label": "vSphere Cluster - WASNode02",
       "secured": false,
-      "required": true,
+      "required": false,
       "immutable": false,
       "group_name": "cloud"
     },
@@ -2340,7 +2166,7 @@
       "hidden": false,
       "label": "vSphere Datacenter - WASNode02",
       "secured": false,
-      "required": true,
+      "required": false,
       "immutable": false,
       "group_name": "cloud"
     },
@@ -2351,7 +2177,7 @@
       "hidden": false,
       "label": "vSphere Folder Name - WASNode02",
       "secured": false,
-      "required": true,
+      "required": false,
       "immutable": false,
       "group_name": "cloud"
     },
@@ -2374,6 +2200,17 @@
           "default": "e1000"
         }
       ],
+      "required": true,
+      "immutable": false,
+      "group_name": "virtualmachine"
+    },
+    {
+      "name": "WASNode02_resource_pool",
+      "type": "string",
+      "description": "Target vSphere Resource Pool to host the virtual machine",
+      "hidden": false,
+      "label": "vSphere Resource Pool - WASNode02",
+      "secured": false,
       "required": true,
       "immutable": false,
       "group_name": "virtualmachine"
