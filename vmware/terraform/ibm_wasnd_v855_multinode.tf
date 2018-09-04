@@ -876,6 +876,19 @@ variable "IHSNode01_root_disk_size" {
   default     = "100"
 }
 
+module "provision_proxy_IHSNode01" {
+  source 						= "git::https://github.com/IBM-CAMHub-Open/terraform-modules.git?ref=1.0//vmware/proxy"
+  ip                  = "${var.IHSNode01_ipv4_address}"
+  id									= "${vsphere_virtual_machine.IHSNode01.id}"
+  ssh_user            = "${var.IHSNode01-os_admin_user}"
+  ssh_password        = "${var.IHSNode01-os_password}"
+  http_proxy_host     = "${var.http_proxy_host}"
+  http_proxy_user     = "${var.http_proxy_user}"
+  http_proxy_password = "${var.http_proxy_password}"
+  http_proxy_port     = "${var.http_proxy_port}"
+  enable							= "${ length(var.http_proxy_host) > 0 ? "true" : "false"}"
+}
+
 # vsphere vm
 resource "vsphere_virtual_machine" "IHSNode01" {
   name             = "${var.IHSNode01-name}"
@@ -923,6 +936,12 @@ resource "vsphere_virtual_machine" "IHSNode01" {
     type     = "ssh"
     user     = "${var.IHSNode01-os_admin_user}"
     password = "${var.IHSNode01-os_password}"
+    bastion_host        = "${var.bastion_host}"
+    bastion_user        = "${var.bastion_user}"
+    bastion_private_key = "${ length(var.bastion_private_key) > 0 ? base64decode(var.bastion_private_key) : var.bastion_private_key}"
+    bastion_port        = "${var.bastion_port}"
+    bastion_host_key    = "${var.bastion_host_key}"
+    bastion_password    = "${var.bastion_password}"    
   }
 
   provisioner "file" {
@@ -1007,7 +1026,7 @@ EOF
 #########################################################
 
 resource "camc_bootstrap" "IHSNode01_chef_bootstrap_comp" {
-  depends_on      = ["camc_vaultitem.VaultItem", "vsphere_virtual_machine.IHSNode01"]
+  depends_on      = ["camc_vaultitem.VaultItem", "vsphere_virtual_machine.IHSNode01", "module.provision_proxy_IHSNode01"]
   name            = "IHSNode01_chef_bootstrap_comp"
   camc_endpoint   = "${var.ibm_pm_service}/v1/bootstrap/chef"
   access_token    = "${var.ibm_pm_access_token}"
@@ -1218,6 +1237,19 @@ variable "WASDMGRNode01_root_disk_size" {
   default     = "100"
 }
 
+module "provision_proxy_WASDMGRNode01" {
+  source 						= "git::https://github.com/IBM-CAMHub-Open/terraform-modules.git?ref=1.0//vmware/proxy"
+  ip                  = "${var.WASDMGRNode01_ipv4_address}"
+  id									= "${vsphere_virtual_machine.WASDMGRNode01.id}"
+  ssh_user            = "${var.WASDMGRNode01-os_admin_user}"
+  ssh_password        = "${var.WASDMGRNode01-os_password}"
+  http_proxy_host     = "${var.http_proxy_host}"
+  http_proxy_user     = "${var.http_proxy_user}"
+  http_proxy_password = "${var.http_proxy_password}"
+  http_proxy_port     = "${var.http_proxy_port}"
+  enable							= "${ length(var.http_proxy_host) > 0 ? "true" : "false"}"
+}
+
 # vsphere vm
 resource "vsphere_virtual_machine" "WASDMGRNode01" {
   name             = "${var.WASDMGRNode01-name}"
@@ -1265,6 +1297,12 @@ resource "vsphere_virtual_machine" "WASDMGRNode01" {
     type     = "ssh"
     user     = "${var.WASDMGRNode01-os_admin_user}"
     password = "${var.WASDMGRNode01-os_password}"
+    bastion_host        = "${var.bastion_host}"
+    bastion_user        = "${var.bastion_user}"
+    bastion_private_key = "${ length(var.bastion_private_key) > 0 ? base64decode(var.bastion_private_key) : var.bastion_private_key}"
+    bastion_port        = "${var.bastion_port}"
+    bastion_host_key    = "${var.bastion_host_key}"
+    bastion_password    = "${var.bastion_password}"    
   }
 
   provisioner "file" {
@@ -1349,7 +1387,7 @@ EOF
 #########################################################
 
 resource "camc_bootstrap" "WASDMGRNode01_chef_bootstrap_comp" {
-  depends_on      = ["camc_vaultitem.VaultItem", "vsphere_virtual_machine.WASDMGRNode01"]
+  depends_on      = ["camc_vaultitem.VaultItem", "vsphere_virtual_machine.WASDMGRNode01", "module.provision_proxy_WASDMGRNode01"]
   name            = "WASDMGRNode01_chef_bootstrap_comp"
   camc_endpoint   = "${var.ibm_pm_service}/v1/bootstrap/chef"
   access_token    = "${var.ibm_pm_access_token}"
@@ -1628,6 +1666,19 @@ variable "WASNode01_root_disk_size" {
   default     = "100"
 }
 
+module "provision_proxy_WASNode01" {
+  source 						= "git::https://github.com/IBM-CAMHub-Open/terraform-modules.git?ref=1.0//vmware/proxy"
+  ip                  = "${var.WASNode01_ipv4_address}"
+  id									= "${vsphere_virtual_machine.WASNode01.id}"
+  ssh_user            = "${var.WASNode01-os_admin_user}"
+  ssh_password        = "${var.WASNode01-os_password}"
+  http_proxy_host     = "${var.http_proxy_host}"
+  http_proxy_user     = "${var.http_proxy_user}"
+  http_proxy_password = "${var.http_proxy_password}"
+  http_proxy_port     = "${var.http_proxy_port}"
+  enable							= "${ length(var.http_proxy_host) > 0 ? "true" : "false"}"
+}
+
 # vsphere vm
 resource "vsphere_virtual_machine" "WASNode01" {
   name             = "${var.WASNode01-name}"
@@ -1675,6 +1726,12 @@ resource "vsphere_virtual_machine" "WASNode01" {
     type     = "ssh"
     user     = "${var.WASNode01-os_admin_user}"
     password = "${var.WASNode01-os_password}"
+    bastion_host        = "${var.bastion_host}"
+    bastion_user        = "${var.bastion_user}"
+    bastion_private_key = "${ length(var.bastion_private_key) > 0 ? base64decode(var.bastion_private_key) : var.bastion_private_key}"
+    bastion_port        = "${var.bastion_port}"
+    bastion_host_key    = "${var.bastion_host_key}"
+    bastion_password    = "${var.bastion_password}"    
   }
 
   provisioner "file" {
@@ -1759,7 +1816,7 @@ EOF
 #########################################################
 
 resource "camc_bootstrap" "WASNode01_chef_bootstrap_comp" {
-  depends_on      = ["camc_vaultitem.VaultItem", "vsphere_virtual_machine.WASNode01"]
+  depends_on      = ["camc_vaultitem.VaultItem", "vsphere_virtual_machine.WASNode01", "module.provision_proxy_WASNode01"]
   name            = "WASNode01_chef_bootstrap_comp"
   camc_endpoint   = "${var.ibm_pm_service}/v1/bootstrap/chef"
   access_token    = "${var.ibm_pm_access_token}"
@@ -2040,6 +2097,19 @@ variable "WASNode02_root_disk_size" {
   default     = "100"
 }
 
+module "provision_proxy_WASNode02" {
+  source 						= "git::https://github.com/IBM-CAMHub-Open/terraform-modules.git?ref=1.0//vmware/proxy"
+  ip                  = "${var.WASNode02_ipv4_address}"
+  id									= "${vsphere_virtual_machine.WASNode02.id}"
+  ssh_user            = "${var.WASNode02-os_admin_user}"
+  ssh_password        = "${var.WASNode02-os_password}"
+  http_proxy_host     = "${var.http_proxy_host}"
+  http_proxy_user     = "${var.http_proxy_user}"
+  http_proxy_password = "${var.http_proxy_password}"
+  http_proxy_port     = "${var.http_proxy_port}"
+  enable							= "${ length(var.http_proxy_host) > 0 ? "true" : "false"}"
+}
+
 # vsphere vm
 resource "vsphere_virtual_machine" "WASNode02" {
   name             = "${var.WASNode02-name}"
@@ -2087,6 +2157,12 @@ resource "vsphere_virtual_machine" "WASNode02" {
     type     = "ssh"
     user     = "${var.WASNode02-os_admin_user}"
     password = "${var.WASNode02-os_password}"
+    bastion_host        = "${var.bastion_host}"
+    bastion_user        = "${var.bastion_user}"
+    bastion_private_key = "${ length(var.bastion_private_key) > 0 ? base64decode(var.bastion_private_key) : var.bastion_private_key}"
+    bastion_port        = "${var.bastion_port}"
+    bastion_host_key    = "${var.bastion_host_key}"
+    bastion_password    = "${var.bastion_password}"    
   }
 
   provisioner "file" {
@@ -2171,7 +2247,7 @@ EOF
 #########################################################
 
 resource "camc_bootstrap" "WASNode02_chef_bootstrap_comp" {
-  depends_on      = ["camc_vaultitem.VaultItem", "vsphere_virtual_machine.WASNode02"]
+  depends_on      = ["camc_vaultitem.VaultItem", "vsphere_virtual_machine.WASNode02", "module.provision_proxy_WASNode02"]
   name            = "WASNode02_chef_bootstrap_comp"
   camc_endpoint   = "${var.ibm_pm_service}/v1/bootstrap/chef"
   access_token    = "${var.ibm_pm_access_token}"

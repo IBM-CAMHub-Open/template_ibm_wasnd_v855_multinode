@@ -1,5 +1,5 @@
 # Template - IBM WebSphere Network Deployment 8.5.5 cell with IBM HTTP Server
-Template Version - 2.0
+Template Version - 2.1
 
 ## Description
 
